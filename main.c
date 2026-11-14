@@ -1,6 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+
+int ConvertirPalabra(char palabra[],valor_letras[26])
+{
+    int cifra=0;
+
+
+    for (int i=0;i<10;i++) //limite del contador provisional
+    {
+        cifra=cifra *10 + valor_letras[palabra[i]-'A'];
+    }
+}
+
+
+
+
 void backtraking(int nivel,int *valor_letras[26],int *pos_ocupadas[10],const char letras_criptograma[],int *contador_nodos)
 {
     contador_nodos++;
