@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 
 
-int ConvertirPalabra(char palabra[],valor_letras[26])
+int ConvertirPalabra(const char palabra[],int valor_letras[26])
 {
     int cifra=0;
 
@@ -12,28 +13,50 @@ int ConvertirPalabra(char palabra[],valor_letras[26])
     {
         cifra=cifra *10 + valor_letras[palabra[i]-'A'];
     }
+
+    return cifra;
+}
+
+bool ComprobarSuma(int valor_letras[26])
+{
+    int palabra1,palabra2,palabra3,resultado;
+    palabra1=ConvertirPalabra("HARRY",valor_letras);
+    palabra2=ConvertirPalabra("POTTER",valor_letras);
+    palabra3=ConvertirPalabra("TROLLS",valor_letras);
+
+    resultado=palabra1+palabra2;
+
+    if(resultado==palabra3)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+
 }
 
 
-
-
-void backtraking(int nivel,int *valor_letras[26],int *pos_ocupadas[10],const char letras_criptograma[],int *contador_nodos)
+int backtraking(int nivel,int valor_letras[26],int pos_ocupadas[10],const char letras_criptograma[],int *contador_nodos)
 {
     contador_nodos++;
-    char letra_actual=letras_criptograma[aux];
+    char letra_actual=letras_criptograma[nivel];
 
-    if(aux==10)
+    if(nivel==10)
     {
-        if(ComprobarSuma()==true)//Tengo que implementar la funcion
+        if(ComprobarSuma(valor_letras)==true)//Tengo que implementar la funcion
         {
-            //Guardar solucion
+            printf("Solucion encontrada");
+            return 0;
         }
-        return;
+        return 1;
     }
 
     for(int i=0;i<10;i++)
     {
-        if(*pos_ocupadas[i]==1)
+        if(pos_ocupadas[i]==1)
         {
             continue;
         }
@@ -43,15 +66,15 @@ void backtraking(int nivel,int *valor_letras[26],int *pos_ocupadas[10],const cha
             continue;
         }
 
-        valor_letras[letra_actual-'A']=cifra;
+        valor_letras[letra_actual-'A']=i;
 
-        pos_ocupadas[cifra]=1;
+        pos_ocupadas[i]=1;
 
-        backtraking(nivel++,&valor_letras,&pos_ocupadas,letras_criptograma,&contador_nodos);
+        backtraking(nivel+1,valor_letras,pos_ocupadas,letras_criptograma,contador_nodos);
 
         valor_letras[letra_actual-'A']=-1;
 
-        pos_ocupadas[cifra]=0;
+        pos_ocupadas[i]=0;
 
 
     }
@@ -66,7 +89,7 @@ int main()
     const char letras_criptograma[]="HARYPOTELS";
     int aux=0,cont=0;
 
-    backtraking(aux,&Valor_letras,&pos_ocupadas,letras_criptograma,&cont);
+    backtraking(aux,Valor_letras,pos_ocupadas,letras_criptograma,&cont);
 
 
     return 0;
