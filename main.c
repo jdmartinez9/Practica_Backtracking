@@ -50,7 +50,7 @@ int backtraking(int nivel,int valor_letras[26],int pos_ocupadas[10],const char l
     {
         if(ComprobarSuma(valor_letras)==true)//Tengo que implementar la funcion
         {
-            printf("Solucion encontrada");
+            printf("Solucion encontrada \n");
             return 0;
         }
         return 1;
