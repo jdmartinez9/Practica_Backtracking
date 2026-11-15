@@ -43,7 +43,7 @@ bool ComprobarSuma(int valor_letras[26])
 int backtraking(int nivel,int valor_letras[26],int pos_ocupadas[10],const char letras_criptograma[],int *contador_nodos)
 {
     int resultado=0;
-    contador_nodos++;
+    (*contador_nodos)++;
     char letra_actual=letras_criptograma[nivel];
 
     if(nivel==10)
@@ -85,6 +85,7 @@ int backtraking(int nivel,int valor_letras[26],int pos_ocupadas[10],const char l
 
 
     }
+    return 1;
 
 }
 
@@ -94,21 +95,28 @@ int main()
     int Valor_letras[26];
     int pos_ocupadas[10]={0};
     const char letras_criptograma[]="HARYPOTELS";
-    int aux=0,cont=0;
+    int aux=0,cont=0,resultado;
 
     for(int i=0;i<26;i++)
     {
         Valor_letras[i]=-1;
     }
 
-    backtraking(aux,Valor_letras,pos_ocupadas,letras_criptograma,&cont);
+    resultado=backtraking(aux,Valor_letras,pos_ocupadas,letras_criptograma,&cont);
 
-    for (int i=0;i<26;i++)
+    if(resultado==0)
     {
-        if(Valor_letras[i]!=-1)
+        for (int i=0;i<26;i++)
         {
-            printf("%c:%d \n",'A'+ i,Valor_letras[i]);
+            if(Valor_letras[i]!=-1)
+            {
+                printf("%c:%d \n",'A'+ i,Valor_letras[i]);
+            }
         }
+    }
+    else if(resultado==1)
+    {
+        printf("No se ha encontrado una solucion");
     }
 
 
