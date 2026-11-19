@@ -119,6 +119,7 @@ int main()
         printf("No se ha encontrado una solucion");
     }
 
-
+     printf("\nNodos explorados (Apartado D): %d\n", cont);
+ 
     return 0;
 }
