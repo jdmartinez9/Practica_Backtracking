@@ -2,13 +2,11 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-
-
+#include <time.h> // Apartado E medición tiempo
 
 int ConvertirPalabra(const char palabra[],int valor_letras[26])
 {
     int cifra=0;
-
 
     for (int i=0;i< strlen(palabra);i++)
     {
@@ -35,10 +33,7 @@ bool ComprobarSuma(int valor_letras[26])
     {
         return false;
     }
-
-
 }
-
 
 int backtraking(int nivel,int valor_letras[26],int pos_ocupadas[10],const char letras_criptograma[],int *contador_nodos)
 {
@@ -48,7 +43,7 @@ int backtraking(int nivel,int valor_letras[26],int pos_ocupadas[10],const char l
 
     if(nivel==10)
     {
-        if(ComprobarSuma(valor_letras)==true)//Tengo que implementar la funcion
+        if(ComprobarSuma(valor_letras)==true)
         {
             printf("Solucion encontrada \n");
             return 0;
@@ -82,13 +77,9 @@ int backtraking(int nivel,int valor_letras[26],int pos_ocupadas[10],const char l
         valor_letras[letra_actual-'A']=-1;
 
         pos_ocupadas[i]=0;
-
-
     }
     return 1;
-
 }
-
 
 int main()
 {
@@ -97,12 +88,26 @@ int main()
     const char letras_criptograma[]="HARYPOTELS";
     int aux=0,cont=0,resultado;
 
+    // Variables de tiempo apartado E
+    clock_t inicio, fin;
+    double tiempo_usado;
+
+    // Descifrar matricula
+    const char matricula[] = "6531484901984";
+
     for(int i=0;i<26;i++)
     {
         Valor_letras[i]=-1;
     }
 
+    // Inicio medicion apartado E
+    inicio = clock();
+
     resultado=backtraking(aux,Valor_letras,pos_ocupadas,letras_criptograma,&cont);
+
+    // Fin medicion apartado E
+    fin = clock();
+    tiempo_usado = ((double) (fin - inicio)) / CLOCKS_PER_SEC;
 
     if(resultado==0)
     {
@@ -113,13 +118,31 @@ int main()
                 printf("%c:%d \n",'A'+ i,Valor_letras[i]);
             }
         }
+
+        // Descifrar matricula
+        printf("\n--- MATRICULA DESCIFRADA ---\n");
+        printf("Matricula codificada: %s\n", matricula);
+        printf("Mensaje oculto:       ");
+        for(int i = 0; i < strlen(matricula); i++) {
+            int digito = matricula[i] - '0';
+            for(int j = 0; j < 26; j++) {
+                if(Valor_letras[j] == digito) {
+                    printf("%c", 'A' + j);
+                    break;
+                }
+            }
+        }
+        printf("\n");
+
+        // Imprimir resultados D y E
+        printf("\n--- RENDIMIENTO ---\n");
+        printf("Nodos explorados (Apartado D): %d\n", cont);
+        printf("Tiempo empleado (Apartado E): %f segundos\n", tiempo_usado);
     }
     else if(resultado==1)
     {
         printf("No se ha encontrado una solucion");
     }
 
-     printf("\nNodos explorados (Apartado D): %d\n", cont);
- 
     return 0;
 }
