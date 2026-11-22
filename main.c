@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int tam_autobus=3;
 int edades[] = {7,8,9,12,13};
@@ -8,6 +9,7 @@ int mejor=100;
 int mejor_comb[5];
 int comb_act[5];
 int nodos=0;
+double tiempo;
 
 void algoritmo_ejercicio1(int i,int ocupados,int primero,int ultimo){
     nodos++;
@@ -47,7 +49,10 @@ void algoritmo_ejercicio1(int i,int ocupados,int primero,int ultimo){
 
 int main()
 {
+    clock_t inicio = clock();
     algoritmo_ejercicio1(0,0,0,0);
+    clock_t fin = clock();
+    tiempo=(double)(fin-inicio)/CLOCKS_PER_SEC;
     printf("Diferencia edades: %d",mejor);
     printf("\nMejor Combinacion: ");
     for (int j = 0; j < numero_alumnos; j++){
@@ -57,5 +62,6 @@ int main()
 
     }
     printf("\nNodos explorados: %d",nodos);
+    printf("\nTiempo backtraking: %f s",tiempo);
 
 }
