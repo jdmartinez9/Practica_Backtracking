@@ -4,11 +4,13 @@
 int tam_autobus=3;
 int edades[] = {7,8,9,12,13};
 int numero_alumnos=5;
-int mejor=5;
+int mejor=100;
 int mejor_comb[5];
 int comb_act[5];
+int nodos=0;
 
 void algoritmo_ejercicio1(int i,int ocupados,int primero,int ultimo){
+    nodos++;
     if (ocupados==tam_autobus){
         int candidato= edades[ultimo]-edades[primero];
         if (candidato<mejor){
@@ -54,5 +56,6 @@ int main()
         }
 
     }
+    printf("\nNodos explorados: %d",nodos);
 
 }
