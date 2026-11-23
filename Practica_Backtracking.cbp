@@ -19,6 +19,14 @@
 				<Option compiler="gcc-mingw64" />
 			</Target>
 		</Build>
+		<Unit filename="Ejercicio1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Ejercicio1.h" />
+		<Unit filename="Ejercicio2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="Ejercicio2.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

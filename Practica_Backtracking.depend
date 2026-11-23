@@ -3,3 +3,26 @@
 	<stdio.h>
 	<stdlib.h>
 
+1795429409 source:c:\users\pc\desktop\apuntes\ucam\segundo año\primer cuatri\algoritmia\segunda matricula\tema 2\practica_backtracking\ejercicio1.c
+	"Ejercicio1.h"
+
+1795429676 c:\users\pc\desktop\apuntes\ucam\segundo año\primer cuatri\algoritmia\segunda matricula\tema 2\practica_backtracking\ejercicio1.h
+	<stdio.h>
+	<time.h>
+	<limits.h>
+
+1795429912 source:c:\users\pc\desktop\apuntes\ucam\segundo año\primer cuatri\algoritmia\segunda matricula\tema 2\practica_backtracking\ejercicio2.c
+	"Ejercicio2.h"
+
+1795429912 c:\users\pc\desktop\apuntes\ucam\segundo año\primer cuatri\algoritmia\segunda matricula\tema 2\practica_backtracking\ejercicio2.h
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+	<time.h>
+
+1795429953 source:c:\users\pc\desktop\apuntes\ucam\segundo año\primer cuatri\algoritmia\segunda matricula\tema 2\practica_backtracking\main.c
+	<stdio.h>
+	"Ejercicio1.h"
+	"Ejercicio2.h"
+
